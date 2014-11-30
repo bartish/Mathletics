@@ -1,0 +1,145 @@
+<html>
+	<head>      
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+      		<link rel="stylesheet" href="css/main.css">
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h1>Welcome to the Mathletics Department</h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="problem_box">
+						<div id="dFactor1" class="factor"></div>
+						<div id="dOperator" class="operator">x</div>
+						<div id="dFactor2" class="factor"></div>
+						<hr></hr>
+						<div>
+							<input type="text" id="txtAnswer"/>
+							<input type="button" value="Answer" onclick="check_answer()"/>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<input type="button" value="Randomize" onclick="get_random_numbers()"/>
+					<div id="dAnswertext"></div>
+					<div class="option_box">
+						<h2>Options</h2>
+					<div class="operator_option">
+						<input type="checkbox" id="optAddition"/>
+						<label>Addition</label>
+					</div>
+					<div class="operator_option">
+						<input type="checkbox" id="optSubtraction"/>
+						<label>Subtraction</label>
+					</div>
+					<div class="operator_option">
+						<input type="checkbox" id="optMultiplication"/>
+						<label>Multiplication</label>
+					</div>
+					<div class="operator_option">
+						<input type="checkbox" id="optDivision"/>
+						<label>Division</label>
+					</div>
+				</div>
+			</div>			
+		</div>
+	<script type="text/javascript">
+		function get_random_numbers(){
+			var rangemax=12;
+			var a=Math.round(Math.random()*rangemax);
+			var b=Math.round(Math.random()*rangemax);
+			var operator = get_random_operator();
+
+			document.getElementById('dOperator').innerHTML= operator;
+			document.getElementById('dFactor1').innerHTML=a;
+			document.getElementById('dFactor2').innerHTML=b;
+		}
+		function check_answer(){
+			var a=document.getElementById('dFactor1').innerHTML;
+			var b=document.getElementById('dFactor2').innerHTML;
+			var answer=document.getElementById('txtAnswer').value;
+			var operator = document.getElementById('dOperator').innerHTML;			
+			
+			var actualAnswer;
+			
+			if(operator =='+') {
+				actualAnswer = a+b;
+			}
+			else if(operator =='-') {
+				actualAnswer = a-b;
+			}
+			else if(operator =='*') {
+				actualAnswer = a*b;
+			}
+			else {
+				actualAnswer = a/b;
+			}
+
+			if(actualAnswer==answer){
+				alert('correct');
+			}
+			else{
+				alert('incorrect');
+			}	
+			document.getElementById('dAnswertext').innerHTML=actualAnswer;	
+	
+		}
+		function get_random_operator(){
+			var count=0;
+			if(document.getElementById('optAddition').checked){
+				count+=1;
+			}
+			if(document.getElementById('optSubtraction').checked){
+				count+=1;
+			}			
+			if(document.getElementById('optMultiplication').checked){
+				count+=1;
+			}			
+			if(document.getElementById('optDivision').checked){
+				count+=1;
+			}
+			
+			var random = Math.ceil(Math.random()*count);
+
+			if(random == 0) {
+				return '+';
+			}
+
+			var iteration=1;
+			if (document.getElementById('optAddition').checked) {
+				if (random == iteration) {
+					return '+';
+				}
+				else {iteration+=1;}
+			}
+			if (document.getElementById('optSubtraction').checked) {
+				if (random == iteration) {
+					return '-';
+				}
+				else {iteration+=1;}
+			}
+			if (document.getElementById('optMultiplication').checked) {
+				if (random == iteration) {
+					return '*';
+				}
+				else {iteration+=1;}
+			}
+			if (document.getElementById('optDivision').checked) {
+				if (random == iteration) {
+					return '/';
+				}
+			}
+
+			return '+';
+
+		}
+	</script>
+
+
+	</body>
+</html>
