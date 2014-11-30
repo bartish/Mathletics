@@ -1,0 +1,23 @@
+h1{font-size:34px;}
+.row{text-align:center;}
+.problem_box{
+	margin: 25px;
+	width: 500px;
+	height: 500px;
+	border: 2px solid;
+    	padding: 50px;
+    	background: #ddd;
+    	border-radius: 2em;
+}
+.factor{font-size:40px;}
+.operator{font-size:40px; font-weight:bold; float:left;}
+.option_box{
+	margin: 25px;
+	width: 200px;
+	height: 200px;
+	border: 2px solid;
+    	padding: 10px;
+    	background: #ddd;
+    	border-radius: 2em;
+}
+.operator_option{text-align:left;margin-left:25px;}
